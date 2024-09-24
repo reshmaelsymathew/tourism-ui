@@ -76,7 +76,7 @@ export default {
         
         // Redirect to the dashboard after successful submission
         setTimeout(() => {
-          this.$router.push("/dashboard");
+          this.$router.push("/visitors");
         }, 5000); // 5 seconds
       } catch (error) {
         this.errorMessage = "Failed to submit visitor information.";

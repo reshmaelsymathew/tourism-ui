@@ -84,7 +84,7 @@ export default {
         this.resetForm();
         // Wait for 5 seconds before navigating to dashboard
         setTimeout(() => {
-          this.$router.push("/dashboard");
+          this.$router.push("/room-booking-list");
         }, 5000); // 5 seconds
       } catch (error) {
         console.error("Error:", error.response || error.message);

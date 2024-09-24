@@ -6,9 +6,9 @@
       <div class="flex items-center space-x-6">
         <img src="/images/logo.jpg" alt="Logo" class="h-8 w-8" />
         <router-link to="/dashboard" class="text-lg text-blue-600 hover:underline">Dashboard</router-link>
-        <router-link to="/visitor-information" class="text-lg text-blue-600 hover:underline">Tourism Information Center (TIC)</router-link>
-        <router-link to="/room-booking" class="text-lg text-blue-600 hover:underline">Accommodation Providers (AP)</router-link>
-        <router-link to="/ride-booking" class="text-lg text-blue-600 hover:underline">Local Transportation Services (LTS)</router-link>
+        <router-link to="/visitors" class="text-lg text-blue-600 hover:underline">Tourism Information Center (TIC)</router-link>
+        <router-link to="/room-booking-list" class="text-lg text-blue-600 hover:underline">Accommodation Providers (AP)</router-link>
+        <router-link to="/ride-booking-list" class="text-lg text-blue-600 hover:underline">Local Transportation Services (LTS)</router-link>
       </div>
 
       <!-- Profile Image -->
