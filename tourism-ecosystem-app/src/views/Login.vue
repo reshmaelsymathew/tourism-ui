@@ -1,60 +1,56 @@
 <template>
-    <div class="login-page">
-      <div class="login-box">
-        <h2>Login</h2>
-        <form @submit.prevent="login">
-          <input v-model="username" type="text" placeholder="Username" required />
-          <input v-model="password" type="password" placeholder="Password" required />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+  <div class="login-page h-screen flex items-center justify-center" style="background-image: url('/images/tourismau.jpg');">
+    <div class="login-box bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-sm">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+      <form @submit.prevent="login" class="space-y-4">
+        <input
+          v-model="username"
+          type="text"
+          placeholder="Username"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          class="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Login
+        </button>
+      </form>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        username: '',
-        password: '',
-      };
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  },
+  methods: {
+    login() {
+      if (this.username === 'admin' && this.password === 'password') {
+        this.$router.push('/dashboard');
+      } else {
+        alert('Invalid Credentials');
+      }
     },
-    methods: {
-      login() {
-        if (this.username === 'admin' && this.password === 'password') {
-          this.$router.push('/dashboard');
-        } else {
-          alert('Invalid Credentials');
-        }
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .login-page {
-    background-image: url('/tourismau.jpg');
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-  }
-  .login-box {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  input {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-  }
-  button {
-    padding: 10px;
-    width: 100%;
-  }
-  </style>
-  
+  },
+};
+</script>
+
+<style scoped>
+.login-page {
+  background-size: cover;
+  background-position: center;
+}
+</style>
