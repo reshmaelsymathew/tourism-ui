@@ -4,11 +4,24 @@
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold">Ride Bookings</h2>
         <button
+          @click="goToAddVisitor"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+          Add Visitor Information
+        </button>
+        <button
+          @click="goToAddRoomBooking"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+        Add Room Booking
+        </button>
+        <button
           @click="goToAddRideBooking"
           class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
         >
-          Add Ride Booking
+        Add Ride Booking
         </button>
+
       </div>
   
       <!-- Ride Booking Table -->
@@ -16,6 +29,7 @@
         <table class="min-w-full table-auto">
           <thead>
             <tr class="bg-gray-200 text-left text-gray-600 font-bold uppercase text-sm">
+              <th class="px-6 py-3">Visitor Name</th>
               <th class="px-6 py-3">Pickup Location</th>
               <th class="px-6 py-3">Drop Off Location</th>
               <th class="px-6 py-3">Vehicle Type</th>
@@ -27,6 +41,7 @@
           </thead>
           <tbody>
             <tr v-for="booking in rideBookings" :key="booking.id" class="border-t border-gray-300">
+              <td class="px-6 py-4">{{ booking.visitorName }}</td>
               <td class="px-6 py-4">{{ booking.pickupLocation }}</td>
               <td class="px-6 py-4">{{ booking.dropOffLocation }}</td>
               <td class="px-6 py-4">{{ booking.vehicleType }}</td>
@@ -76,14 +91,21 @@
       // Fetch all ride bookings from the backend
       async fetchRideBookings() {
         try {
-          const response = await axios.get("http://localhost:8080/api/ridebookings");
+          const response = await axios.get("http://localhost:8081/api/ridebookings");
           this.rideBookings = response.data;
         } catch (error) {
           console.error("Failed to fetch ride bookings:", error);
         }
       },
-      // Navigate to add ride booking form
-      goToAddRideBooking() {
+      // Navigate to add visitor form
+      goToAddVisitor() {
+        this.$router.push("/visitor-information");
+      },
+      goToAddRoomBooking() {
+        this.$router.push("/room-booking");
+      },
+       // Navigate to add ride booking form
+       goToAddRideBooking() {
         this.$router.push("/ride-booking");
       },
       // Navigate to view ride booking details
@@ -98,7 +120,7 @@
       async deleteBooking(id) {
         if (confirm("Are you sure you want to delete this booking?")) {
           try {
-            await axios.delete(`http://localhost:8080/api/ridebookings/${id}`);
+            await axios.delete(`http://localhost:8081/api/ridebookings/${id}`);
             this.fetchRideBookings(); // Refresh the list after deletion
           } catch (error) {
             console.error("Failed to delete ride booking:", error);

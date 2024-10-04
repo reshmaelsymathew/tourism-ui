@@ -9,6 +9,19 @@
         >
           Add Visitor Information
         </button>
+        <button
+          @click="goToAddRoomBooking"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+        Add Room Booking
+        </button>
+        <button
+          @click="goToAddRideBooking"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+        Add Ride Booking
+        </button>
+
       </div>
   
       <!-- Visitor Information Table -->
@@ -80,7 +93,7 @@
       // Fetch all visitors from the backend
       async fetchVisitors() {
         try {
-          const response = await axios.get("http://localhost:8080/api/visitorinformation");
+          const response = await axios.get("http://localhost:8082/api/visitorinformation");
           this.visitors = response.data;
         } catch (error) {
           console.error("Failed to fetch visitors:", error);
@@ -89,6 +102,13 @@
       // Navigate to add visitor form
       goToAddVisitor() {
         this.$router.push("/visitor-information");
+      },
+      goToAddRoomBooking() {
+        this.$router.push("/room-booking");
+      },
+       // Navigate to add ride booking form
+       goToAddRideBooking() {
+        this.$router.push("/ride-booking");
       },
       // Navigate to view visitor details
       viewVisitor(id) {
@@ -102,7 +122,7 @@
       async deleteVisitor(id) {
         if (confirm("Are you sure you want to delete this visitor?")) {
           try {
-            await axios.delete(`http://localhost:8080/api/visitorinformation/${id}`);
+            await axios.delete(`http://localhost:8082/api/visitorinformation/${id}`);
             this.fetchVisitors(); // Refresh the list after deletion
           } catch (error) {
             console.error("Failed to delete visitor:", error);

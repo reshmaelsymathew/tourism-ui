@@ -93,15 +93,7 @@ export default {
       }
     },
     resetForm() {
-      this.roomBooking = {
-        customerName: "",
-        roomType: "",
-        numberOfGuests: "",
-        checkInDate: "",
-        checkOutDate: "",
-        totalPrice: "",
-        bookingStatus: ""
-      };
+      
     }
   }
 };

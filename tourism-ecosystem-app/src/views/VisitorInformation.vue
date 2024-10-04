@@ -69,7 +69,7 @@ export default {
   methods: {
     async submitVisitorInfo() {
       try {
-        await axios.post("http://localhost:8080/api/visitorinformation", this.visitor);
+        await axios.post("http://localhost:8082/api/visitorinformation", this.visitor);
         this.successMessage = "Visitor information submitted successfully!";
         this.errorMessage = "";
         this.resetForm();
@@ -84,15 +84,7 @@ export default {
       }
     },
     resetForm() {
-      this.visitor = {
-        visitorName: "",
-        email: "",
-        phoneNumber: "",
-        nationality: "",
-        preferredLanguage: "",
-        inquiry: "",
-        visitDate: ""
-      };
+      
     }
   }
 };

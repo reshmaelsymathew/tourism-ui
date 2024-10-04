@@ -4,11 +4,24 @@
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold">Room Bookings</h2>
         <button
-          @click="goToAddRoomBooking"
-          class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          @click="goToAddVisitor"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
         >
-          Add Room Booking
+          Add Visitor Information
         </button>
+        <button
+          @click="goToAddRoomBooking"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+        Add Room Booking
+        </button>
+        <button
+          @click="goToAddRideBooking"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
+        Add Ride Booking
+        </button>
+
       </div>
   
       <!-- Room Booking Table -->
@@ -88,9 +101,16 @@
           console.error("Failed to fetch room bookings:", error);
         }
       },
-      // Navigate to add room booking form
+      // Navigate to add visitor form
+      goToAddVisitor() {
+        this.$router.push("/visitor-information");
+      },
       goToAddRoomBooking() {
         this.$router.push("/room-booking");
+      },
+       // Navigate to add ride booking form
+       goToAddRideBooking() {
+        this.$router.push("/ride-booking");
       },
       // Navigate to view room booking details
       viewBooking(id) {

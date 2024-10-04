@@ -7,6 +7,16 @@
       <h2 class="text-2xl font-bold mb-6">Ride Booking</h2>
       <form @submit.prevent="submitRideBooking">
         <div class="mb-4">
+          <div class="mb-4">
+          <label for="visitorName" class="block text-gray-700 font-bold mb-2">Visitor Name</label>
+          <input
+            type="text"
+            id="visitorName"
+            v-model="rideBooking.visitorName"
+            required
+            class="form-input w-full"
+          />
+        </div>
           <label for="pickupLocation" class="block text-gray-700 font-bold mb-2">Pickup Location</label>
           <input
             type="text"
@@ -114,7 +124,7 @@ export default {
   methods: {
     async submitRideBooking() {
       try {
-        await axios.post("http://localhost:8080/api/ridebookings", this.rideBooking);
+        await axios.post("http://localhost:8081/api/ridebookings", this.rideBooking);
         this.successMessage = "Ride booking submitted successfully!";
         this.errorMessage = "";
         this.resetForm();
@@ -130,15 +140,7 @@ export default {
       }
     },
     resetForm() {
-      this.rideBooking = {
-        pickupLocation: "",
-        dropOffLocation: "",
-        vehicleType: "",
-        rideDate: "",
-        noOfPassengers: "",
-        paymentMethod: "",
-        contactNumber: ""
-      };
+      
     }
   }
 };
